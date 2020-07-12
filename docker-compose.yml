@@ -1,32 +1,27 @@
 version: '3.8'
-
 services:
     api:
         container_name: api
         build:
             context: ./docker/nodejs
             dockerfile: Dockerfile
+        restart: always
         depends_on:
             - mysql
-        restart: always
+        networks:
+            - backend
         ports:
             - 3030:3030
         volumes:
             - ./api:/www
-        networks:
-            - backend-network
         command: npm start
     mysql:
+        container_name: mysql
         image: mysql:latest
+        restart: always
+        networks:
+            - backend
         ports:
             - 3306:3306
-        networks:
-            - backend-network
-        environment:
-            MYSQL_ROOT_PASSWORD: toor
-            MYSQL_DATABASE: test
-            MYSQL_USER: root
-            MYSQL_PASSWORD: mysql
-
 networks:
-    backend-network:
+    backend:

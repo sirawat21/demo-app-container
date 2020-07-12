@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
     api:
-        container_name: demo-app-container:api
+        container_name: api
         build:
             context: ./docker/nodejs
             dockerfile: Dockerfile

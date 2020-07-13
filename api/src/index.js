@@ -1,15 +1,17 @@
-import os from "os"
+import express from "express"
 
-class test {
-    constructor() {
-        this.os = os.version()
-    }
+const api = express()
+api.use(express.json())
 
-    getOS = () => this.os
-}
+let model = []
 
-const testObj = new test()
+api.get("/api/model", (req, res) => {
+    res.status(500).send(model)
+})
 
-console.log('-+'.repeat(40))
-console.log(testObj.getOS())
-console.log('-+'.repeat(40))
+api.get("/api/model:id", (req, res) => {
+    const searchedModel = model.filter(item => item.id == req.params.id)
+    res.status(500).send(searchedModel)
+})
+
+api.listen(3030, () => console.log("API: LISTENNING-3030"))

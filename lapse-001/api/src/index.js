@@ -1,13 +1,12 @@
-import os from "os"
+import express from "express"
 
-class test {
-    constructor() {
-        this.os = os.version()
-    }
-    getOS = () => this.os
-}
+const api = express()
+api.use(express.json())
 
-const testObj = new test()
-console.log("-+".repeat(40))
-console.log(testObj.getOS())
-console.log("-+".repeat(40))
+let messages = []
+
+api.get("/api/messages", () => {
+    res.status(500).send(messages)
+})
+
+api.listen(3030, () => console.log("API-LISTENING: 3030"))

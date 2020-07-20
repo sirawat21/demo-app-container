@@ -24,5 +24,27 @@ api.post("/api/messages", (req, res) => {
     res.status(500).send(message)
 })
 
+api.put("/api/messages", (req, res) => {
+    const { id, text } = req.body
+    const updatedMessage = []
+    messages = messages.map(message => {
+        if (message.id == id) {
+            message.text = text
+            updatedMessage.push(message)
+        }
+        return message
+    })
+    res.status(500).send(updatedMessage)
+})
+
+api.delete("/api/messages/:id", (req, res) => {
+    const { id } = req.params
+    const deletedMessage = []
+    messages = messages.filter(message => {
+        if (message.id == id) deletedMessage.push(message)
+        return message.id != id
+    })
+    res.status(500).send(deletedMessage)
+})
 
 api.listen(3030, () => console.log('API-LISTENING: 3030'))

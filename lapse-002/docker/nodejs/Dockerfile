@@ -1,5 +1,5 @@
 FROM node:12
-LABEL maintainer "Brett Sira"
+LABEL maintainer "brett sira"
 WORKDIR /www
-COPY ./../../api/package.jsonn /www
+COPY ./../../api/package.json /www
 CMD ["npm", "install"]

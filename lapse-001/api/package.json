@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-        "start": "npm run watch",
-        "clear": "rm -rf ./dist",
-        "complie": "babel ./src --out-dir ./dist --copy-files",
-        "build": "npm-run-all clear complie",
-        "dev": "babel-node ./src",
-        "watch": "nodemon"
+    "start": "npm run watch",
+    "clear": "rm -rf ./dist",
+    "complie": "babel ./src --out-dir ./dist --copy-files",
+    "build": "npm-run-all clear complie",
+    "dev": "babel-node ./src",
+    "watch": "nodemon"
   },
   "author": "",
   "license": "ISC",

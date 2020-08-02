@@ -3,8 +3,8 @@ services:
     api:
         container_name: api
         build:
-            context:
-            dockerfile:
+            context: ./docker/nodejs
+            dockerfile: Dockerfile
             volumes:
             networks
             ports:

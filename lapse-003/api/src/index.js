@@ -15,5 +15,15 @@ api.get("/api/messages/:id", (req, res) => {
     res.status(500).send(searchedMessage)
 })
 
+api.post("/api/messages", (req, res) => {
+    const { id, text } = req.body
+    const message = {
+        id: (id.length > 0) ? messages.slice(-1)[0].id + 1 : 1,
+        text: text
+    }
+    messages.push(message)
+    res.status(500).send(message)
+})
+
 
 api.listen(3030, () => console.log('API: Listening'))

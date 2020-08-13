@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
     api:
-        container_name: demo-app-container:api
+        container_name: api
         build:
             context: ./docker/nodejs
             dockerfile: Dockerfile
@@ -15,8 +15,10 @@ services:
             - ./api:/www
         networks:
             - backend-network
+        command: npm install
         command: npm start
     mysql:
+        container_name: db
         image: mysql:latest
         ports:
             - 3306:3306
@@ -24,9 +26,9 @@ services:
             - backend-network
         environment:
             MYSQL_ROOT_PASSWORD: toor
-            MYSQL_DATABASE: test
-            MYSQL_USER: root
-            MYSQL_PASSWORD: mysql
+            MYSQL_DATABASE: db1
+            MYSQL_USER: user1
+            MYSQL_PASSWORD: 1234
 
 networks:
     backend-network:

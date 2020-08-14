@@ -54,6 +54,8 @@ services:
             - backend-network
         volumes:
             - ./volumes/redis:/bitnami/redis/data
+        environment:
+            - REDIS_PASSWORD=1234
 
 networks:
     backend-network:

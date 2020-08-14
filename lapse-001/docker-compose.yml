@@ -24,11 +24,14 @@ services:
             - 3306:3306
         networks:
             - backend-network
+        volumes:
+            - ./mysql:/var/lib/mysql
         environment:
-            MYSQL_ROOT_PASSWORD: toor
+            MYSQL_ROOT_PASSWORD: toor1234
             MYSQL_DATABASE: db1
             MYSQL_USER: user1
             MYSQL_PASSWORD: 1234
 
 networks:
     backend-network:
+

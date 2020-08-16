@@ -1,4 +1,4 @@
-version: '3.0'
+version: '3.8'
 
 services:
     api:
@@ -6,19 +6,49 @@ services:
         build:
             context: docker/nodejs
             dockerfile: Dockerfile
+        volumes:
+            - ./api:/www
         networks:
             - backend
+        ports:
+            - 3030:3030
+        depends_on:
+            - mysql
+        command: npm install
+        command: npm start
     mysql:
+        container_name: mysql
         image: mysql:latest
+        volumes:
+            - ./volumes/mysql:/var/lib/mysql
         networks:
             - backend
+        ports:
+            - 3306:3306
+        environment:
+            - MYSQL_ROOT_PASSWORD=toor1234
+            - MYSQL_DATABASE=db1
+            - MYSQL_USER=user1
+            - MYSQL_PASSWORD=1234
     mongo:
+        container_name: mongo
         image: mongo:latest
+        ports:
+            - 27017-27019:27017-27019
         networks:
             - backend
+        volumes:
+            - ./volumes/mongo:/data/db
     redis:
-        image: redis:latest
+        container_name: redis
+        image: bitnami/redis:latest
+        ports:
+            - 6379:6379
         networks:
             - backend
+        volumes:
+            - ./volumes/redis:/bitnami/redis/data
+        environment:
+            - REDIS_PASSWORD=1234
 networks:
     backend:

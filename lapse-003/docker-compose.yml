@@ -1,0 +1,24 @@
+version: '3.0'
+
+services:
+    api:
+        container_name: api
+        build:
+            context: docker/nodejs
+            dockerfile: Dockerfile
+        networks:
+            - backend
+    mysql:
+        image: mysql:latest
+        networks:
+            - backend
+    mongo:
+        image: mongo:latest
+        networks:
+            - backend
+    redis:
+        image: redis:latest
+        networks:
+            - backend
+networks:
+    backend:

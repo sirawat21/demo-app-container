@@ -1,11 +1,15 @@
 import express from "express"
+import moment from "moment"
 
+import { mysqlDB } from "./helpers"
 const api = express()
 api.use(express.json())
-
 let messages = []
 
-api.get("/api/messages", (req, res) => {
+api.get("/api/messages", async (req, res) => {
+    const connectMysqlDB = new mysqlDB()
+    const mysqlResult = await connectMysqlDB.query("select * from test")
+    console.log(mysqlResult)
     res.status(500).send(messages)
 })
 

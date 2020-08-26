@@ -27,12 +27,12 @@ class mysqlDB {
             if (connection) connection.release()
         })
 
-        this.pool = util.promisify(this.pool.query)
+        this.pool = promisify(this.pool.query)
     }
 
-    query = async (qstr) => {
+    /* query = async (qstr) => {
         return this.pool.query(qstr)
-    }
+    } */
 }
 
 export default mysqlDB

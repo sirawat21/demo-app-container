@@ -30,9 +30,9 @@ class mysqlDB {
         this.pool = promisify(this.pool.query)
     }
 
-    /* query = async (qstr) => {
-        return this.pool.query(qstr)
-    } */
+    query = async (qstr) => {
+        return this.pool.query(qstr).bind(this)
+    }
 }
 
 export default mysqlDB

@@ -7,8 +7,7 @@ api.use(express.json())
 let messages = []
 
 api.get("/api/messages", async (req, res) => {
-    const connectMysqlDB = new mysqlDB()
-    const mysqlResult = await connectMysqlDB.query("select * from test")
+    const mysqlResult = await mysqlDB.query("select * from test")
     console.log(mysqlResult)
     res.status(500).send(messages)
 })

@@ -1,12 +1,13 @@
 import express from "express"
-
+import { validate } from "./helpers/validate.js"
 const api = express()
 api.use(express.json())
 
 let messages = []
 
 api.get("/api/messages/", (req, res) => {
-    res.status(500).send(messages)
+    // const result = validate("")
+    res.status(500).send(result)
 })
 
 api.get("/api/messages/:id", (req, res) => {

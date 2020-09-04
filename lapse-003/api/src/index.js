@@ -26,4 +26,16 @@ api.post("/api/messages", (req, res) => {
     res.status(500).send(message)
 })
 
+api.put("/api/messages", (req, res) => {
+    const { id, text } = req.body
+    const updatedMessage = []
+    messages = messages.map(message => {
+        if (message.id == id) {
+            message.text = text
+            updatedMessage.push(message)
+        }
+        return message
+    })
+})
+
 api.listen(3030, () => console.log('API-LISTENNING: 3030'))

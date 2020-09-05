@@ -36,6 +36,17 @@ api.put("/api/messages", (req, res) => {
         }
         return message
     })
+    res.status(500).send(updatedMessage)
+})
+
+api.delete("/api/message/:id", (req, res) => {
+    const { id } = req.params
+    const deletedMessage = []
+    messages = messages.filter(message => {
+        if (message.id == id) deletedMessage.push(message)
+        return message.id != id
+    })
+    res.status(500).send(deletedMessage)
 })
 
 api.listen(3030, () => console.log('API-LISTENNING: 3030'))

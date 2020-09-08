@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
     api:
-        container_name: api
+        container_name: lap001-api
         build:
             context: ./docker/nodejs
             dockerfile: Dockerfile
@@ -32,7 +32,7 @@ services:
             - MYSQL_USER=user1
             - MYSQL_PASSWORD=1234
     mongo:
-        container_name: mongo
+        container_name: lap002-mongo
         image: mongo:latest
         ports:
             - 27017-27019:27017-27019
@@ -46,7 +46,7 @@ services:
             - MONGO_INITDB_ROOT_USERNAME=root
             - MONGO_INITDB_ROOT_PASSWORD=toor1234
     redis:
-        container_name: redis
+        container_name: lap003-redis
         image: bitnami/redis:latest
         ports:
             - 6379:6379

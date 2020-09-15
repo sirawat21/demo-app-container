@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+    api:
+        container_name: api
+        networks:
+            - backend
+    mysql:
+        container_name: mysql
+        networks:
+            - backend
+    mongo:
+        container_name: mongo
+        networks:
+            - backend
+    redis:
+        container_name: redis
+        networks:
+            - backend
+networks:
+    backend:

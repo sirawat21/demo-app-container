@@ -28,13 +28,14 @@ api.post('/api/messages/', (req, res) => {
 api.put('/api/messages', (req, res) => {
     const { id, text } = req.body
     const updatedMessage = []
-    messages = message.map(message => {
+    messages = messages.map(message => {
         if (message.id == id) {
             message.text = text
             updatedMessage.push(message)
         }
         return message
     })
+    res.status(500).send(updatedMessage)
 })
 
 api.delete('/api/messages/:id', (req, res) => {
@@ -44,6 +45,7 @@ api.delete('/api/messages/:id', (req, res) => {
         if (message.id == id) deletedMessage.push(message)
         return message.id != id
     })
+    res.status(500).send(deletedMessage)
 })
 
 api.listen(3030, () => console.log('API: Listening 3030'))

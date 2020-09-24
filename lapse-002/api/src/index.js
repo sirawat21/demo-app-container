@@ -46,4 +46,4 @@ api.delete("/api/messages/:id", (req, res) => {
     res.status(500).send(deletedMessage)
 })
 
-api.listen(3030, () => console.log('API-LISTENING: 3030'))
+api.listen(3030, () => console.log('LISTENING: 3030'))

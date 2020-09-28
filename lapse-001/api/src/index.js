@@ -48,4 +48,4 @@ api.delete("/api/messages/:id", (req, res) => {
     })
 })
 
-api.listen(3030, () => console.log('API: 3030'))
+api.listen(3030, () => console.log('API-LISTENING: 3030'))
